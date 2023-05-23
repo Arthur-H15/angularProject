@@ -1,0 +1,31 @@
+.invalid-feedback {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .form-control.is-invalid {
+    border-color: red;
+    box-shadow: none;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
+  }
+  .form-group label{
+    display: block;
+    margin: 5px;
+  }
+  .form-container button{
+    margin: 15px 0;
+  }
+  

@@ -1,0 +1,50 @@
+.dialog-content {
+
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Cor de fundo cinza com transparência */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+
+
+}
+
+.formulario {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+    background-color: aliceblue;
+    // height: 400px;
+    input{
+        display: block;
+        margin: 10px;
+       
+    }
+    mat-label{
+        margin: 10px;
+    }
+  #form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+        padding: 15px;
+        margin: 5px;
+    }
+}
+.error {
+    input.mat-input-element {
+      border-color: red;
+    }
+  }
+  

@@ -1,0 +1,48 @@
+<div class="dialog-content">
+    <div class="formulario">
+      <h2 mat-dialog-title>{{ formMode === 'create' ? 'Novo usuário' : 'Editar usuário' }}</h2>
+      <div mat-dialog-content>
+        <form [formGroup]="form" id="form">
+          <mat-form-field appearance="fill" [class.error]="isFieldValid('nome')">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" />
+            <mat-error *ngIf="isFieldValid('nome')">Campo obrigatório</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" [class.error]="isFieldValid('email')">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error *ngIf="isFieldValid('email')">
+              <span *ngIf="form.get('email')?.hasError('required')">Campo obrigatório</span>
+              <span *ngIf="form.get('email')?.hasError('email')">Email inválido</span>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" [class.error]="isFieldValid('numero')">
+            <mat-label>Número</mat-label>
+            <input matInput formControlName="numero" mask="(00)90000-0000" />
+            <mat-error *ngIf="isFieldValid('numero')">Campo obrigatório com 11 dígitos numéricos</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" [class.error]="isFieldValid('senha')">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" formControlName="senha" />
+            <mat-error *ngIf="isFieldValid('senha')">Campo obrigatório</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" [class.error]="isFieldValid('confirmarSenha') || isPasswordsMatch()">
+            <mat-label>Confirmar Senha</mat-label>
+            <input matInput type="password" formControlName="confirmarSenha" (blur)="validateField('confirmarSenha')" />
+            <mat-error *ngIf="isFieldValid('confirmarSenha') && !isPasswordsMatch()">Campo obrigatório</mat-error>
+            <mat-error *ngIf="isPasswordsMatch()">Senhas não coincidem</mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close()">Cancelar</button>
+        <button mat-button color="primary" [disabled]="!form.valid" (click)="formMode === 'create' ? save() : update()">Salvar</button>
+        <!-- <button mat-button color="primary" [disabled]="!form.valid" (click)="update()" *ngIf="formMode === 'edit'">Salvar</button> -->
+      </div>
+    </div>
+  </div>
+  

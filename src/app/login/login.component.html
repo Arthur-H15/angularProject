@@ -1,0 +1,23 @@
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{'is-invalid': isFormControlInvalid('email', 'required') || isFormControlInvalid('email', 'email')}">
+        <div *ngIf="isFormControlInvalid('email', 'required')" class="invalid-feedback">
+          Email é obrigatório.
+        </div>
+        <div *ngIf="isFormControlInvalid('email', 'email')" class="invalid-feedback">
+          Email inválido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': isFormControlInvalid('password', 'required')}">
+        <div *ngIf="isFormControlInvalid('password', 'required')" class="invalid-feedback">
+          Senha é obrigatória.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Entrar</button>
+    </form>
+  </div>
+  
